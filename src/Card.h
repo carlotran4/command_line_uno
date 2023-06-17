@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <experimental/random>
+
 using namespace std;
 using std::experimental::randint; using std::experimental::reseed;
 
@@ -66,11 +67,11 @@ struct Card{
 };
 
 ostream & print(std::ostream &os, const Card &item){
-    if(item.is_plus_4 == true){
+    if(item.is_plus_4){
         os<<"Plus 4";
         return os;
     }
-    if(item.is_wild == true){
+    if(item.is_wild){
         os<<"Wild Card";
         return os;
     }

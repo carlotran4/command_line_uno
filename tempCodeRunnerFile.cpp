@@ -1,2 +1,0 @@
-
-    person.print_hand();
