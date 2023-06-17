@@ -6,50 +6,37 @@
 #include <vector>
 #include <experimental/random>
 
-using namespace std;
-using std::experimental::randint; using std::experimental::reseed;
-
 struct Card{
-    string color;
-    string symbol;
+    std::string color;
+    std::string symbol;
     bool is_plus_4 = false;
     bool is_wild = false;
+
     Card(){
-        reseed();
-        int cint = randint(1,10000);
-        if(cint<1875){
-            color = "Red";
-            symbol = to_string(randint(1,9));}
-        else if(cint<3750){
-            color = "Blue";
-            symbol = to_string(randint(1,9));
-        }
-        else if(cint<5625){
-            color = "Green";
-            symbol = to_string(randint(1,9));
-        }
-        else if(cint<7500){
-            color = "Yellow";
-            symbol = to_string(randint(1,9));
-        }
-        else{
-            reseed();
-            int sint = randint(1,100);
-            if(sint<25){is_wild = true;}
-            else if(sint<50){is_plus_4 = true;}
-            else if(sint<75){
-                symbol = "skip";
-                color = colors[randint(0,3)];
+        std::experimental::reseed();
+        color = colors[std::experimental::randint(0,3)];
+        std::experimental::reseed();
+        int randomSymbol = std::experimental::randint(1,14);
+        if(randomSymbol <= 10) symbol = std::to_string(randomSymbol);
+        if(randomSymbol == 11) symbol = "skip";
+        if(randomSymbol == 12) symbol = "reverse";
+        if(randomSymbol == 13) symbol = "+2";
+        if(randomSymbol == 14){
+            std::experimental::reseed();
+            int wildOrPlus = std::experimental::randint(1,2);
+            if(wildOrPlus == 1){
+                symbol = "wild";
+                is_wild = true;
             }
-            else{
-                symbol = "reverse";
-                color = colors[randint(0,3)];
+            else {
+                symbol = "+4";
+                is_plus_4 = true;
             }
-            
         }
+
     }
     
-    bool is_valid_play(string color_in_play, string symbol_in_play){
+    bool is_valid_play(std::string color_in_play, std::string symbol_in_play){
         if(is_plus_4 || is_wild){
             return true;
         }
@@ -63,10 +50,10 @@ struct Card{
     }
 
     private:
-        vector<string> colors = {"Red","Blue","Green","Yellow"};
+        std::vector<std::string> colors = {"Red","Blue","Green","Yellow"};
 };
 
-ostream & print(std::ostream &os, const Card &item){
+std::ostream & print(std::ostream &os, const Card &item){
     if(item.is_plus_4){
         os<<"Plus 4";
         return os;

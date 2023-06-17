@@ -7,10 +7,10 @@
 #include <string>
 
 struct Player{
-    vector<Card> hand;
-    string name;
+    std::vector<Card> hand;
+    std::string name;
     bool is_alive = true;
-    Player(string n){
+    Player(std::string n){
         name = n;
         draw(7);
     }
@@ -23,16 +23,16 @@ struct Player{
     void print_hand(){
         int i = 1;
         for(Card card: hand){
-            cout<<i<<" [";
-            print(cout, card);
-            cout<<"]    ";
-            if(i%7==0) cout<<"\n";
+            std::cout<<i<<" [";
+            print(std::cout, card);
+            std::cout<<"]    ";
+            if(i%7==0) std::cout<<"\n";
             ++i;
         }
-        cout<<endl;
+        std::cout<<std::endl;
     }
     void print_hand_to_others(){
-        cout<<name<<" has "<<hand.size()<<" cards."<<endl;
+        std::cout<<name<<" has "<<hand.size()<<" cards."<<std::endl;
     }
     Card play_card(int cardno){
         Card card = hand[cardno-1];
@@ -41,8 +41,8 @@ struct Player{
     }
 
     //return most prevalent color in hand
-    string most_freq_color(){
-        vector<int> colors (4,0);
+    std::string most_freq_color(){
+        std::vector<int> colors (4,0);
         for(Card &card:hand){
             if(card.color == "Red") ++colors[0];
             if(card.color == "Blue") ++colors[1];
