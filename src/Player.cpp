@@ -13,20 +13,17 @@ void Player::draw(int no_cards) {
     }
 }
 
-void Player::print_hand() {
-    int i = 1;
-    for(Card &card: hand){
-        std::cout<<i<<" [";
-        print(std::cout, card);
-        std::cout<<"]    ";
-        if(i%7==0) std::cout<<"\n";
-        ++i;
+std::string Player::to_string(bool toSelf) {
+    std::string returnString;
+    if(toSelf){
+        for(int i = 0; i<hand.size(); ++i){
+            returnString+= std::to_string(i+1)+" ["
+                    +hand[i].to_string()+"]    ";
+        }
+        return returnString;
     }
-    std::cout<<std::endl;
-}
-
-void Player::print_hand_to_others() {
-    std::cout<<name<<" has "<<hand.size()<<" cards."<<std::endl;
+    returnString+= name + " has " + std::to_string(hand.size())+" cards.";
+    return returnString;
 }
 
 Card Player::play_card(int cardNo){

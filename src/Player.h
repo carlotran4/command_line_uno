@@ -9,7 +9,7 @@
 struct Player{
     std::vector<Card> hand;
     std::string name;
-    bool is_alive = true;
+    bool inGame = true;
 
     /**
      * Initializes a Player object with seven random cards in its hand
@@ -24,16 +24,7 @@ struct Player{
      */
     void draw(int no_cards);
 
-    /**
-     * Prints the cards in the players hand, with a corresponding number.
-     * Ex. 1 [Yellow 2]   2 [Blue 5]
-     */
-    void print_hand();
-
-    /**
-     * Prints "Name has n cards"
-     */
-    void print_hand_to_others();
+    std::string to_string(bool toSelf);
 
     /**
      * Removes a card from the player's hand.

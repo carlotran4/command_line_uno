@@ -9,9 +9,6 @@
 struct Card{
     std::string color;
     std::string symbol;
-    bool is_plus_4 = false;
-    bool is_wild = false;
-
     /**
      * Constructs a card following the probability distribution of a
      * 112 card uno deck.
@@ -26,10 +23,16 @@ struct Card{
      */
     bool is_valid_play(std::string color_in_play, std::string symbol_in_play);
 
+    bool is_valid_play(Card& card);
+
+    std::string to_string();
+
     private:
         std::vector<std::string> colors = {"Red","Blue","Green","Yellow"};
 };
 
+
+//TODO: deprecate
 /**
  * Prints the color and symbol of a card
  * @param os std::cout.
