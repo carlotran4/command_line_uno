@@ -76,3 +76,15 @@ void botPlaySequence(Player &player, Card &cardInPlay) {
 
 }
 
+void reverse_players(std::vector<Player> &players, int &index) {
+    std::vector<Player> temp;
+    for(int i = index-1; i>=0; --i){
+        temp.push_back(players[i]);
+    }
+    for(int i = players.size()-1; i>= index; --i){
+        temp.push_back(players[i]);
+    }
+    players = temp;
+    index = -1;
+}
+

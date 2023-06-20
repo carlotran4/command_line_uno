@@ -24,6 +24,12 @@ struct Player{
      */
     void draw(int no_cards);
 
+    /**
+     * Returns a string representation of the Player's data.
+     *
+     * @param toSelf If true, will print the cards that are in
+     * the player's hands. Otherwise will just print the number of cards.
+     */
     std::string to_string(bool toSelf);
 
     /**
