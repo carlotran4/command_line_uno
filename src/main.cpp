@@ -56,7 +56,7 @@ int main(){
             if(cardInPlay.symbol == "Reverse") {
                 reverse_players(players, i);
                 animatedPrint("Reversal! The new order is: ");
-                for(Player p: players){
+                for(Player &p: players){
                     if(p.name == players.back().name) animatedPrint(p.name+"\n");
                     else animatedPrint(p.name+", ");
                 }
