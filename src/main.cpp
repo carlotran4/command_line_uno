@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-#include <experimental/algorithm>
 #include "gameflow.h"
 
 //TODO: Make main function more concise/easy to follow
@@ -17,8 +16,12 @@ int main(){
     Player bot2 = Player("Bot 2");
     Player bot3 = Player("Bot 3");
     Player person = Player("You");
+
     std::vector<Player> players {bot1,bot2,bot3,person};
-    std::experimental::shuffle(players.begin(), players.end());
+    std::random_device random_dev;
+    std::mt19937 generator(random_dev());
+    std::shuffle(players.begin(), players.end(), generator);
+
     animatedPrint("Order:");
     for(Player p: players){
         if(p.name == players.back().name) animatedPrint(p.name+"\n");

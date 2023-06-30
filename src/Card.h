@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <experimental/random>
+#include <random>
 
 struct Card{
     std::string color;
@@ -30,5 +30,7 @@ struct Card{
     private:
         std::vector<std::string> colors = {"Red","Blue","Green","Yellow"};
 };
+
+int randint(int lower, int upper);
 
 #endif //_card_

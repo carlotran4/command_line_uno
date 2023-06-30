@@ -45,4 +45,4 @@ struct Player{
     std::string most_freq_color();
 };
 
-#endif //player
+#endif //_player_
