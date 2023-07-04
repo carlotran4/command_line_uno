@@ -31,6 +31,11 @@ struct Card{
         std::vector<std::string> colors = {"Red","Blue","Green","Yellow"};
 };
 
+/**
+ * Generates an integer within [lower,upper].
+ * @param lower - lower bound. Inclusive.
+ * @param upper - upper bound. Inclusive.
+*/
 int randint(int lower, int upper);
 
 #endif //_card_
